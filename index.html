@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarqueX — Pursue. Own. Revere.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Barlow:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#090909">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --white:    #FAFAFA;
+            --black:    #090909;
+            --red:      #D42B16;
+            --gray-100: #2a2a2a;
+            --gray-200: #333333;
+            --gray-400: #999999;
+            --gray-600: #bbbbbb;
+        }
+
+        html { font-size: 16px; scroll-behavior: smooth; }
+
+        body {
+            background: #3a3a3a;
+            color: var(--white);
+            font-family: 'Barlow', sans-serif;
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        /* ─── HEADER ─────────────────────────────────────── */
+        header {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 100;
+            height: 60px;
+            padding: 0 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--black);
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .h-brand {
+            font-family: 'DM Mono', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: none;
+            color: var(--white);
+        }
+
+        .h-brand s { text-decoration-color: var(--white); }
+
+        .h-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gray-600);
+        }
+
+        .h-menu {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+        }
+
+        .h-menu span {
+            display: block;
+            width: 16px;
+            height: 1px;
+            background: var(--white);
+        }
+
+        /* ─── HERO ────────────────────────────────────────── */
+        .hero {
+            min-height: 100vh;
+            padding-top: 60px;
+            position: relative;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            overflow: hidden;
+            background: #000000;
+        }
+
+        .hero-image-wrapper {
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image {
+            mix-blend-mode: screen;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .hero-bg-text {
+            position: absolute;
+            bottom: 0.1em;
+            right: -0.04em;
+            font-family: 'Barlow', sans-serif;
+            font-weight: 900;
+            font-size: clamp(48px, 8vw, 100px);
+            line-height: 1;
+            color: #2a2a2a;
+            pointer-events: none;
+            user-select: none;
+            letter-spacing: -0.02em;
+        }
+
+
+        .hero-labels {
+            padding: 32px 48px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mono-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+        }
+
+        .mono-label.accent { color: var(--red); }
+
+        .hero-content {
+            padding: 0 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gray-600);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            animation: fadeUp 0.7s ease 0s both;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 28px;
+            height: 1px;
+            background: var(--red);
+            flex-shrink: 0;
+        }
+
+        .hero-h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(80px, 14vw, 180px);
+            line-height: 0.9;
+            letter-spacing: 0.01em;
+            animation: fadeUp 0.9s ease 0.15s both;
+        }
+
+        .hero-h1 em {
+            font-style: normal;
+            color: var(--red);
+        }
+
+        .hero-foot {
+            padding: 48px 48px 120px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+            animation: fadeUp 0.7s ease 0.3s both;
+        }
+
+        .hero-desc {
+            max-width: 400px;
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1.75;
+            color: var(--gray-600);
+        }
+
+        .hero-desc strong { color: var(--white); font-weight: 600; }
+
+        .hero-cta-link {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+            border-bottom: 1px solid var(--white);
+            padding-bottom: 3px;
+            transition: color 0.15s, border-color 0.15s;
+            white-space: nowrap;
+        }
+
+        .hero-cta-link:hover { color: var(--red); border-color: var(--red); }
+
+        .side-label {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%) rotate(90deg);
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            font-weight: 300;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            white-space: nowrap;
+            z-index: 3;
+        }
+
+        /* ─── TICKER ──────────────────────────────────────── */
+        .ticker {
+            overflow: hidden;
+            border-top: 3px solid var(--black);
+            border-bottom: 3px solid var(--black);
+            padding: 13px 0;
+        }
+
+        .ticker-track {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            animation: tickerScroll 28s linear infinite;
+            white-space: nowrap;
+        }
+
+        .ticker-item {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .ticker-sep {
+            flex-shrink: 0;
+            font-size: 7px;
+            color: var(--red);
+            line-height: 1;
+        }
+
+        @keyframes tickerScroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        /* ─── ABOUT ───────────────────────────────────────── */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            min-height: 70vh;
+        }
+
+        .about-left {
+            padding: 80px 48px;
+            border-right: 1px solid var(--gray-200);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-bg-num {
+            position: absolute;
+            bottom: -0.18em;
+            left: -0.05em;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(140px, 22vw, 320px);
+            line-height: 1;
+            color: var(--gray-100);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .about-top-label { position: relative; z-index: 2; }
+
+        .about-stat {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-stat-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(48px, 7vw, 80px);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .about-right { padding: 80px 48px 80px 64px; }
+
+        .section-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--red);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-tag::after {
+            content: '';
+            flex: 0 0 32px;
+            height: 1px;
+            background: var(--red);
+        }
+
+        .about-h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(44px, 6vw, 72px);
+            line-height: 1;
+            margin-bottom: 28px;
+            letter-spacing: 0.02em;
+        }
+
+        .about-p {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.85;
+            color: var(--gray-600);
+            margin-bottom: 48px;
+            max-width: 460px;
+        }
+
+        .coverage-list { list-style: none; }
+
+        .coverage-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 13px 0;
+            border-top: 1px solid var(--gray-200);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .coverage-item:last-child { border-bottom: 1px solid var(--gray-200); }
+
+        .coverage-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 300;
+            color: var(--gray-400);
+            width: 24px;
+            flex-shrink: 0;
+        }
+
+        .coverage-tag {
+            margin-left: auto;
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            font-weight: 300;
+            color: var(--gray-400);
+            letter-spacing: 0.1em;
+        }
+
+        /* ─── FEATURES ────────────────────────────────────── */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .feature-card {
+            padding: 48px 40px;
+            border-right: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .feature-card:last-child { border-right: none; }
+
+        .feature-id {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            color: var(--red);
+            margin-bottom: 24px;
+        }
+
+        .feature-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 30px;
+            line-height: 1.1;
+            margin-bottom: 14px;
+            letter-spacing: 0.03em;
+        }
+
+        .feature-text {
+            font-size: 13px;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--gray-600);
+        }
+
+        /* ─── SIGNUP ──────────────────────────────────────── */
+        .signup {
+            background: #000000;
+            color: var(--white);
+            padding: 120px 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signup-image-wrapper {
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signup-image {
+            mix-blend-mode: screen;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .signup-bg-text {
+            position: absolute;
+            bottom: -0.14em;
+            right: -0.02em;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(120px, 22vw, 340px);
+            line-height: 1;
+            color: #101010;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .signup-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .signup .section-tag { color: var(--red); }
+        .signup .section-tag::after { background: var(--red); }
+
+        .signup-h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(72px, 11vw, 136px);
+            line-height: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .signup-sub {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #D8D8D8;
+            margin-bottom: 52px;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #404040;
+            max-width: 500px;
+        }
+
+        .signup-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid #404040;
+        }
+
+        .signup-form-row .signup-input:first-child {
+            border-right: 1px solid #404040;
+        }
+
+        .signup-input {
+            width: 100%;
+            padding: 18px 22px;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: var(--white);
+            caret-color: var(--red);
+            cursor: text;
+        }
+
+        .signup-input-wrap {
+            border-bottom: 1px solid #404040;
+        }
+
+        .signup-input::placeholder {
+            color: #909090;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 11px;
+        }
+
+        .signup-input:focus {
+            background: #0F0F0F;
+        }
+
+        .signup-btn {
+            padding: 18px 28px;
+            background: var(--red);
+            border: none;
+            color: var(--white);
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.15s ease;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .signup-btn:hover { background: #F03420; }
+
+        .signup-note {
+            margin-top: 18px;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: #C0C0C0;
+        }
+
+        .success-msg {
+            display: none;
+            margin-top: 24px;
+            padding: 18px 0;
+            border-top: 1px solid #363636;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--red);
+        }
+
+        .success-msg.show { display: block; }
+
+        /* ─── FOOTER ──────────────────────────────────────── */
+        footer {
+            padding: 28px 48px;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-copy {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: var(--gray-400);
+        }
+
+        .footer-copy s { text-decoration-color: var(--gray-400); }
+
+        .footer-nav { display: flex; gap: 28px; }
+
+        .footer-nav a {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .footer-nav a:hover { color: var(--white); }
+
+        /* ─── CUSTOM CURSOR ──────────────────────────────────── */
+        .cursor-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: var(--red);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.08s ease, opacity 0.2s ease;
+            mix-blend-mode: screen;
+        }
+
+        /* ─── HEADER SCROLL STATE ─────────────────────────────── */
+        header {
+            transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(9, 9, 9, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+        }
+
+        /* ─── TICKER EDGE FADE ────────────────────────────────── */
+        .ticker {
+            position: relative;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+        }
+
+        /* ─── FEATURE CARD HOVER ──────────────────────────────── */
+        .feature-card {
+            transition: background 0.25s ease, border-top-color 0.25s ease;
+            border-top: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            background: #0A0A0A;
+            border-top-color: var(--red);
+        }
+
+        .feature-card:hover .feature-name,
+        .feature-card:hover .feature-text {
+            color: var(--white);
+        }
+
+        .feature-name,
+        .feature-text {
+            transition: color 0.25s ease;
+        }
+
+        /* ─── COVERAGE ITEM HOVER ─────────────────────────────── */
+        .coverage-item {
+            transition: padding-left 0.2s ease, color 0.2s ease;
+            position: relative;
+        }
+
+        .coverage-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--red);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.2s ease;
+        }
+
+        .coverage-item:hover { padding-left: 14px; }
+        .coverage-item:hover::before { transform: scaleY(1); }
+
+        /* ─── SIGNAL SECTION ──────────────────────────────────── */
+        .signal {
+            background: var(--black);
+            color: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-top: 1px solid #333333;
+            border-bottom: 1px solid #333333;
+        }
+
+        .signal-left {
+            padding: 80px 48px;
+            border-right: 1px solid #333333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .signal-stat {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(72px, 11vw, 140px);
+            line-height: 0.88;
+            letter-spacing: -0.01em;
+            color: var(--white);
+        }
+
+        .signal-stat em {
+            font-style: normal;
+            color: var(--red);
+        }
+
+        .signal-stat-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #DEDEDE;
+            margin-top: 18px;
+        }
+
+        .signal-right {
+            padding: 80px 64px 80px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 28px;
+        }
+
+        .signal-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--red);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .signal-tag::after {
+            content: '';
+            flex: 0 0 28px;
+            height: 1px;
+            background: var(--red);
+        }
+
+        .signal-headline {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(32px, 4.5vw, 56px);
+            line-height: 1.05;
+            letter-spacing: 0.02em;
+            color: var(--white);
+        }
+
+        .signal-body {
+            font-size: 13px;
+            font-weight: 300;
+            line-height: 1.85;
+            color: #E8E8E8;
+            max-width: 380px;
+        }
+
+        .signal-rule {
+            width: 28px;
+            height: 1px;
+            background: #404040;
+        }
+
+        /* ─── SCROLL REVEAL ───────────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── ANIMATIONS ──────────────────────────────────── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── RESPONSIVE ──────────────────────────────────── */
+        /* ─── AUTH MODAL ──────────────────────────────────────── */
+        .auth-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(9,9,9,0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .auth-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .auth-modal {
+            background: var(--black);
+            border: 1px solid #363636;
+            width: 100%;
+            max-width: 440px;
+            padding: 52px 48px;
+            position: relative;
+            transform: translateY(16px);
+            transition: transform 0.25s ease;
+        }
+
+        .auth-overlay.open .auth-modal {
+            transform: translateY(0);
+        }
+
+        .auth-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #A0A0A0;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            transition: color 0.15s;
+        }
+
+        .auth-close:hover { color: var(--white); }
+
+        .auth-logo {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 32px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 36px;
+            border-bottom: 1px solid #363636;
+        }
+
+        .auth-tab {
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            padding: 10px 0;
+            margin-right: 28px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #A8A8A8;
+            cursor: pointer;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        .auth-tab.active {
+            color: var(--white);
+            border-bottom-color: var(--red);
+        }
+
+        .auth-panel { display: none; }
+        .auth-panel.active { display: block; }
+
+        .auth-field {
+            margin-bottom: 16px;
+        }
+
+        .auth-label {
+            display: block;
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #A8A8A8;
+            margin-bottom: 8px;
+        }
+
+        .auth-input {
+            display: block;
+            width: 100%;
+            padding: 14px 16px;
+            background: #0D0D0D;
+            border: 1px solid #363636;
+            outline: none;
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            color: var(--white);
+            caret-color: var(--red);
+            cursor: text;
+            transition: border-color 0.15s;
+        }
+
+        .auth-input:focus { border-color: #505050; }
+        .auth-input::placeholder { color: #686868; }
+
+        .auth-submit {
+            display: block;
+            width: 100%;
+            margin-top: 28px;
+            padding: 16px;
+            background: var(--red);
+            border: none;
+            color: var(--white);
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .auth-submit:hover { background: #F03420; }
+
+        .auth-error {
+            display: none;
+            margin-top: 16px;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            color: #E05040;
+        }
+
+        .auth-error.show { display: block; }
+
+        .auth-success {
+            display: none;
+            margin-top: 16px;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            color: var(--red);
+        }
+
+        .auth-success.show { display: block; }
+
+        .auth-footer-note {
+            margin-top: 20px;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: #848484;
+        }
+
+        /* ─── HEADER AUTH STATE ──────────────────────────────────── */
+        .h-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .h-login-btn {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.15s;
+        }
+
+        .h-login-btn:hover { color: var(--white); }
+
+        .h-user-chip {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: var(--gray-400);
+        }
+
+        .h-user-chip.visible { display: flex; }
+
+        .h-user-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--red);
+            flex-shrink: 0;
+        }
+
+        .h-logout-btn {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #A0A0A0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.15s;
+        }
+
+        .h-logout-btn:hover { color: var(--red); }
+
+        @media (max-width: 900px) {
+            /* Force reveal sections visible on mobile/tablet */
+            .reveal {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+
+            .signal { grid-template-columns: 1fr; }
+            .signal-left { border-right: none; border-bottom: 1px solid #333333; padding: 60px 24px; }
+            .signal-right { padding: 60px 24px; }
+
+            header { padding: 0 24px; }
+            .h-center { display: none; }
+
+            .hero-labels,
+            .hero-content { padding-left: 24px; padding-right: 24px; }
+            .hero-foot { padding: 40px 24px 48px; flex-direction: column; align-items: flex-start; gap: 32px; }
+            .side-label { display: none; }
+
+            .hero-image { max-width: 100%; max-height: 50vh; object-fit: contain; }
+            .signup-image { max-width: 60%; max-height: 60vh; object-fit: contain; filter: brightness(1.2) contrast(1.4); }
+
+            .about { grid-template-columns: 1fr; }
+            .about-left { display: none; }
+            .about-right { padding: 60px 24px; }
+
+            .features { grid-template-columns: 1fr 1fr; }
+            .feature-card { padding: 32px 24px; }
+            .feature-card:nth-child(2) { border-right: none; }
+            .feature-card:nth-child(3),
+            .feature-card:nth-child(4) { border-bottom: none; }
+
+            .signup { padding: 80px 24px; }
+            .signup-form { max-width: 100%; }
+            .signup-form-row { grid-template-columns: 1fr; }
+            .signup-form-row .signup-input:first-child { border-right: none; border-bottom: 1px solid #404040; }
+
+            footer { padding: 24px; flex-direction: column; gap: 16px; text-align: center; }
+        }
+
+        /* ─── MOBILE (phones ≤ 600px) ────────────────────── */
+        @media (max-width: 600px) {
+
+            /* Global overflow safety */
+            body { overflow-x: hidden; }
+
+            /* Reveal sections visible on mobile (also in 900px query) */
+
+            /* Hero — shrink headline & tighten spacing */
+            .hero { min-height: auto; }
+            .hero-h1 { font-size: clamp(52px, 13vw, 64px); }
+            .hero-labels { padding: 20px 20px 0; }
+            .hero-content { padding: 0 20px; }
+            .hero-foot { padding: 24px 20px 48px; }
+            .hero-eyebrow { font-size: 9px; margin-bottom: 14px; }
+
+            .hero-image { max-width: 95%; max-height: 40vh; object-fit: contain; }
+            .signup-image { max-width: 100%; max-height: 45vh; right: auto; left: 50%; transform: translateY(-50%) translateX(-50%); object-fit: contain; filter: brightness(1.2) contrast(1.4); }
+
+            /* Hide decorative background text & side label */
+            .hero-bg-text,
+            .about-bg-num,
+            .signup-bg-text,
+            .side-label { display: none; }
+
+            /* Section padding — compact */
+            .about-left { padding: 40px 20px; }
+            .about-right { padding: 40px 20px; }
+            .signal-left { padding: 40px 20px; }
+            .signal-right { padding: 40px 20px; }
+            .signup { padding: 48px 20px; }
+
+            /* About heading */
+            .about-h2 { font-size: clamp(36px, 9vw, 48px); margin-bottom: 20px; }
+            .about-p { margin-bottom: 32px; }
+            .about-stat-num { font-size: clamp(40px, 10vw, 56px); }
+
+            /* Signal — compact stat + reduce headline */
+            .signal-stat { font-size: clamp(48px, 13vw, 72px); }
+            .signal-stat-label { margin-top: 10px; }
+            .signal-headline { font-size: clamp(28px, 7vw, 40px); }
+
+            /* Features — 2 columns with reduced padding */
+            .features { grid-template-columns: 1fr 1fr; }
+            .feature-card { padding: 24px 16px; }
+            .feature-card:nth-child(2) { border-right: none; }
+            .feature-card:nth-child(3),
+            .feature-card:nth-child(4) { border-bottom: none; }
+            .feature-name { font-size: 24px; }
+
+            /* Signup — stack name fields, fit on screen */
+            .signup-h2 { font-size: clamp(48px, 13vw, 72px); margin-bottom: 14px; }
+            .signup-sub { margin-bottom: 32px; }
+            .signup-form { max-width: 100%; }
+            .signup-form-row { grid-template-columns: 1fr; }
+            .signup-form-row .signup-input:first-child {
+                border-right: none;
+                border-bottom: 1px solid #404040;
+            }
+
+            /* Scale down all large Bebas Neue headings globally */
+            .signal-stat,
+            .about-stat-num,
+            .hero-h1,
+            .about-h2,
+            .signup-h2,
+            .signal-headline { max-width: 100%; word-break: break-word; }
+
+            /* Header tighter */
+            header { padding: 0 16px; }
+
+            /* Footer */
+            footer { padding: 20px 16px; }
+            .footer-nav { gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+            /* Auth modal — fit small screens */
+            .auth-modal { padding: 36px 24px; margin: 12px; }
+            .auth-modal .auth-field[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- ─── HEADER ─────────────────────────────────────── -->
+<header>
+    <div class="h-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" height="48" style="display:block;background:transparent;" aria-label="MarqueX">
+          <defs>
+            <radialGradient id="bgGrad" cx="28%" cy="50%" r="75%">
+              <stop offset="0%" stop-color="#1c1c1c"/><stop offset="100%" stop-color="#080808"/>
+            </radialGradient>
+            <linearGradient id="chevronGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#B81E0A"/><stop offset="60%" stop-color="#D42B16"/><stop offset="100%" stop-color="#FF4422"/>
+            </linearGradient>
+            <linearGradient id="chevronInnerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#8B1207"/><stop offset="100%" stop-color="#B81E0A"/>
+            </linearGradient>
+            <filter id="bloom" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="9"/>
+            </filter>
+            <linearGradient id="marquexGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#FFFFFF"/><stop offset="35%" stop-color="#F2F2F2"/><stop offset="65%" stop-color="#C4C4C4"/><stop offset="100%" stop-color="#888888"/>
+            </linearGradient>
+            <linearGradient id="stripeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF4422"/><stop offset="50%" stop-color="#D42B16"/><stop offset="100%" stop-color="#D42B16" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="ruleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF5533"/><stop offset="30%" stop-color="#D42B16"/><stop offset="100%" stop-color="#D42B16" stop-opacity="0.2"/>
+            </linearGradient>
+          </defs>
+          <g opacity="0.035" stroke="#CC2200" stroke-width="1">
+            <line x1="80" y1="0" x2="230" y2="200"/><line x1="120" y1="0" x2="270" y2="200"/><line x1="160" y1="0" x2="310" y2="200"/><line x1="200" y1="0" x2="350" y2="200"/><line x1="240" y1="0" x2="390" y2="200"/><line x1="280" y1="0" x2="430" y2="200"/><line x1="320" y1="0" x2="470" y2="200"/><line x1="360" y1="0" x2="510" y2="200"/><line x1="400" y1="0" x2="550" y2="200"/><line x1="440" y1="0" x2="590" y2="200"/><line x1="480" y1="0" x2="630" y2="200"/>
+          </g>
+          <polygon points="0,200 180,200 200,120 20,120" fill="#181818" opacity="0.9"/>
+          <polygon points="0,200 90,200 105,155 0,155" fill="#161616" opacity="0.9"/>
+          <rect x="0" y="0" width="600" height="3" fill="url(#stripeGrad)"/>
+          <rect x="0" y="197" width="600" height="3" fill="#D42B16" opacity="0.12"/>
+          <polygon points="26,46 92,100 26,154 50,154 116,100 50,46" fill="#D42B16" filter="url(#bloom)" opacity="0.55"/>
+          <polygon points="10,34 82,100 10,166 34,166 106,100 34,34" fill="none" stroke="#7A1A0A" stroke-width="1.5" stroke-linejoin="miter"/>
+          <g stroke="#FF4422" stroke-linecap="round">
+            <line x1="116" y1="100" x2="139" y2="88" stroke-width="0.8" opacity="0.30"/><line x1="116" y1="100" x2="140" y2="93" stroke-width="0.8" opacity="0.35"/><line x1="116" y1="100" x2="140" y2="100" stroke-width="1.0" opacity="0.40"/><line x1="116" y1="100" x2="140" y2="107" stroke-width="0.8" opacity="0.35"/><line x1="116" y1="100" x2="139" y2="112" stroke-width="0.8" opacity="0.30"/>
+          </g>
+          <polygon points="26,46 92,100 26,154 50,154 116,100 50,46" fill="url(#chevronGrad)"/>
+          <polygon points="62,58 92,100 62,142 72,142 102,100 72,58" fill="url(#chevronInnerGrad)"/>
+          <polyline points="26,46 92,100" fill="none" stroke="#FF7755" stroke-width="1.2" opacity="0.55" stroke-linecap="round"/>
+          <polyline points="50,46 116,100" fill="none" stroke="#FF7755" stroke-width="0.7" opacity="0.25" stroke-linecap="round"/>
+          <line x1="140" y1="44" x2="140" y2="156" stroke="#252525" stroke-width="1"/>
+          <line x1="140" y1="44" x2="140" y2="56" stroke="#D42B16" stroke-width="1" opacity="0.45"/>
+          <style>@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@900&amp;display=swap');</style>
+          <text x="161" y="123" font-family="'Barlow',sans-serif" font-weight="900" font-size="82" fill="#C42010" opacity="0.18" letter-spacing="1">MarqueX</text>
+          <text x="158" y="122" font-family="'Barlow',sans-serif" font-weight="900" font-size="82" fill="url(#marquexGrad)" letter-spacing="1">MarqueX</text>
+          <rect x="158" y="129" width="420" height="1.5" fill="url(#ruleGrad)"/>
+          <text x="160" y="151" font-family="Impact,'Arial Black',Arial,sans-serif" font-size="14" fill="#D42B16" letter-spacing="7">PURSUE · OWN · REVERE</text>
+          <text x="570" y="184" font-family="'Courier New',Courier,monospace" font-size="8.5" fill="#444444" text-anchor="end" letter-spacing="2">EST. 2026</text>
+        </svg>
+    </div>
+    <div class="h-center">The Collector's Intelligence</div>
+    <div class="h-right">
+        <div class="h-user-chip" id="userChip">
+            <span class="h-user-dot"></span>
+            <span id="userEmail"></span>
+            <button class="h-logout-btn" id="logoutBtn">Log Out</button>
+        </div>
+        <button class="h-login-btn" id="openAuthBtn">Log In</button>
+        <button class="h-menu" aria-label="Menu">
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+
+<!-- ─── HERO ──────────────────────────────────────── -->
+<section class="hero">
+    <div class="hero-image-wrapper">
+        <img src="/assets/images/car-hero.webp" alt="Front-facing supercar with headlights" class="hero-image">
+    </div>
+    <div class="hero-bg-text" aria-hidden="true">MarqueX</div>
+
+    <div class="hero-labels">
+        <span class="mono-label">Est. 2026</span>
+        <span class="mono-label accent"></span>
+    </div>
+
+    <div class="hero-content">
+        <div class="hero-eyebrow">Intelligence For The Discerning Collector</div>
+        <h1 class="hero-h1">
+            For The Few<br>
+            Who<br>
+            <em>Truly</em><br>
+            Understand.
+        </h1>
+    </div>
+
+    <div class="hero-foot">
+        <p class="hero-desc">
+            <strong>"MarqueX"</strong> is the definitive newsletter for the automotive
+            collector. Market intelligence, rare finds, and the stories behind
+            the machines that define a generation.
+        </p>
+        <a href="#signup" class="hero-cta-link">Join The Grid &nbsp;→</a>
+    </div>
+
+    <div class="side-label" aria-hidden="true">// Supercars — Classics — Hypercars — Markets</div>
+</section>
+
+
+
+
+<!-- ─── TICKER ─────────────────────────────────────── -->
+<div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+        <span class="ticker-item">"SUPERCARS"</span><span class="ticker-sep">●</span>
+        <span class="ticker-item">"HYPERCARS"</span><span class="ticker-sep">●</span>
+        <span class="ticker-item">"CLASSIC CARS"</span><span class="ticker-sep">●</span>
+        <span class="ticker-item">"MARKET INTELLIGENCE"</span><span class="ticker-sep">●</span>
+        <span class="ticker-item">"RARE FINDS"</span><span class="ticker-sep">●</span>
+        <span class="ticker-item">"INVESTING"</span><span class="ticker-sep">●</span>
+        <span class="ticker-item">"AUTOMOTIVE NEWS"</span><span class="ticker-sep">●</span>
+        <!-- duplicate for seamless loop -->
+        <span class="ticker-item">"SUPERCARS"</span><span class="ticker-sep">●</span>
+        <span class="ticker-item">"HYPERCARS"</span><span class="ticker-sep">●</span>
+        <span class="ticker-item">"CLASSIC CARS"</span><span class="ticker-sep">●</span>
+        <span class="ticker-item">"MARKET INTELLIGENCE"</span><span class="ticker-sep">●</span>
+        <span class="ticker-item">"RARE FINDS"</span><span class="ticker-sep">●</span>
+        <span class="ticker-item">"INVESTING"</span><span class="ticker-sep">●</span>
+        <span class="ticker-item">"AUTOMOTIVE NEWS"</span><span class="ticker-sep">●</span>
+    </div>
+</div>
+
+
+<!-- ─── ABOUT ──────────────────────────────────────── -->
+<section class="about reveal">
+    <div class="about-left">
+        <div class="about-bg-num" aria-hidden="true">001</div>
+        <div class="about-top-label">
+            <div class="mono-label">Mon — Wed — Fri</div>
+        </div>
+        <div class="about-stat">
+            <div class="about-stat-num">156×</div>
+            <div class="mono-label">Issues Per Year</div>
+        </div>
+    </div>
+    <div class="about-right">
+        <div class="section-tag">What We Cover</div>
+        <h2 class="about-h2">THE FULL<br>GRID.</h2>
+        <p class="about-p">
+            Three times a week, "MarqueX" distills the world of high-performance and collectible
+            automobiles into essential intelligence. From track debuts to auction records,
+            investment-grade classics to next-generation hypercars. If it matters
+            to the collector, it's in your inbox.
+        </p>
+        <ul class="coverage-list">
+            <li class="coverage-item">
+                <span class="coverage-num">01</span>
+                Sports Cars
+                <span class="coverage-tag">"DAILY DRIVERS"</span>
+            </li>
+            <li class="coverage-item">
+                <span class="coverage-num">02</span>
+                Supercars
+                <span class="coverage-tag">"PERFORMANCE"</span>
+            </li>
+            <li class="coverage-item">
+                <span class="coverage-num">03</span>
+                Classic Cars
+                <span class="coverage-tag">"HERITAGE"</span>
+            </li>
+            <li class="coverage-item">
+                <span class="coverage-num">04</span>
+                Hypercars
+                <span class="coverage-tag">"PINNACLE"</span>
+            </li>
+            <li class="coverage-item">
+                <span class="coverage-num">05</span>
+                Market &amp; Investing
+                <span class="coverage-tag">"CAPITAL"</span>
+            </li>
+            <li class="coverage-item">
+                <span class="coverage-num">06</span>
+                Automotive News
+                <span class="coverage-tag">"INTELLIGENCE"</span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+
+<!-- ─── SIGNAL ────────────────────────────────────── -->
+<section class="signal reveal">
+    <div class="signal-left">
+        <div class="signal-stat"><em>↑</em> 340%</div>
+        <div class="signal-stat-label">Avg. collector-market appreciation — 2019–2026</div>
+    </div>
+    <div class="signal-right">
+        <div class="signal-tag">Market Signal</div>
+        <div class="signal-headline">THE MACHINES<br>OUTPERFORMED<br>THE MARKET.</div>
+        <div class="signal-rule"></div>
+        <p class="signal-body">
+            While equities fluctuated, rare and collectible automobiles quietly
+            rewrote what it means to hold an asset. "MarqueX" tracks the intelligence
+            behind every shift before it reaches the auction house.
+        </p>
+    </div>
+</section>
+
+
+<!-- ─── FEATURES ───────────────────────────────────── -->
+<div class="features reveal">
+    <div class="feature-card">
+        <div class="feature-id">// 01</div>
+        <div class="feature-name">3x WEEK<br>BRIEF</div>
+        <p class="feature-text">Curated headlines and analysis every Monday, Wednesday, and Friday morning. No noise, just signal.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-id">// 02</div>
+        <div class="feature-name">MARKET<br>MOVES</div>
+        <p class="feature-text">Auction results, valuation trends, and collector-grade investment intelligence.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-id">// 03</div>
+        <div class="feature-name">DEEP<br>DIVES</div>
+        <p class="feature-text">Long-form essays on the machines, the makers, and the myths that define them, as well as up to date news in the industry. </p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-id">// 04</div>
+        <div class="feature-name">RARE<br>RADAR</div>
+        <p class="feature-text">Notable cars for sale before they hit the mainstream market or the auction block.</p>
+    </div>
+</div>
+
+
+<!-- ─── SIGNUP ─────────────────────────────────────── -->
+<section class="signup reveal" id="signup">
+    <div class="signup-image-wrapper">
+        <img src="/assets/images/car-subscribe.jpg" alt="Side-profile supercar outline" class="signup-image">
+    </div>
+    <div class="signup-inner">
+        <div class="section-tag">Join The Waitlist</div>
+        <h2 class="signup-h2">JOIN<br>THE<br>GRID.</h2>
+        <p class="signup-sub">Mon, Wed & Fri. No noise.</p>
+        <form class="signup-form" id="signupForm" name="waitlist" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+            <input type="hidden" name="form-name" value="waitlist">
+            <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+            <div class="signup-form-row">
+                <input
+                    class="signup-input"
+                    type="text"
+                    id="signupFirst"
+                    name="first-name"
+                    placeholder="First Name"
+                    autocomplete="given-name"
+                    required
+                >
+                <input
+                    class="signup-input"
+                    type="text"
+                    id="signupLast"
+                    name="last-name"
+                    placeholder="Last Name"
+                    autocomplete="family-name"
+                    required
+                >
+            </div>
+            <div class="signup-input-wrap">
+                <input
+                    class="signup-input"
+                    type="email"
+                    id="emailInput"
+                    name="email"
+                    placeholder="E-mail Address"
+                    autocomplete="email"
+                    required
+                >
+            </div>
+            <div class="signup-input-wrap">
+                <input
+                    class="signup-input"
+                    type="tel"
+                    id="signupPhone"
+                    name="phone"
+                    placeholder="Phone Number (Optional)"
+                    autocomplete="tel"
+                >
+            </div>
+            <button class="signup-btn" type="submit">Join The Waitlist →</button>
+        </form>
+        <p class="signup-note">"MarqueX" respects your inbox. No spam. </p>
+        <div class="success-msg" id="successMsg">✓ &nbsp;&nbsp; You're on the grid. First issue is coming to you.</div>
+    </div>
+</section>
+
+
+<!-- ─── FOOTER ─────────────────────────────────────── -->
+<footer>
+    <div class="footer-copy">
+        © 2026 <s>MarqueX</s> INC. c/o Motoring™ — All Rights Reserved
+    </div>
+    <nav class="footer-nav">
+        <a href="#">Archive</a>
+        <a href="#">Privacy</a>
+        <a href="#">Contact</a>
+        <a href="#">Advertise</a>
+    </nav>
+</footer>
+
+
+<!-- ─── AUTH MODAL ────────────────────────────────────── -->
+<div class="auth-overlay" id="authOverlay" role="dialog" aria-modal="true" aria-label="Sign in or create account">
+    <div class="auth-modal">
+        <button class="auth-close" id="authClose">✕ Close</button>
+        <div class="auth-logo">MarqueX — Members</div>
+
+        <div class="auth-tabs">
+            <button class="auth-tab active" data-tab="login">Log In</button>
+            <button class="auth-tab" data-tab="signup">Sign Up</button>
+        </div>
+
+        <!-- Login Panel -->
+        <div class="auth-panel active" id="panel-login">
+            <form id="loginForm" novalidate>
+                <div class="auth-field">
+                    <label class="auth-label" for="loginEmail">E-mail</label>
+                    <input class="auth-input" type="email" id="loginEmail" autocomplete="email" placeholder="your@email.com" required>
+                </div>
+                <div class="auth-field">
+                    <label class="auth-label" for="loginPassword">Password</label>
+                    <input class="auth-input" type="password" id="loginPassword" autocomplete="current-password" placeholder="••••••••" required>
+                </div>
+                <button class="auth-submit" type="submit">Log In →</button>
+                <div class="auth-error" id="loginError"></div>
+                <div class="auth-success" id="loginSuccess"></div>
+            </form>
+            <p class="auth-footer-note">No account? Switch to Sign Up above.</p>
+        </div>
+
+        <!-- Sign Up Panel -->
+        <div class="auth-panel" id="panel-signup">
+            <form id="signupAuthForm" novalidate>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" class="auth-field">
+                    <div>
+                        <label class="auth-label" for="signupFirstName">First Name</label>
+                        <input class="auth-input" type="text" id="signupFirstName" autocomplete="given-name" placeholder="First" required>
+                    </div>
+                    <div>
+                        <label class="auth-label" for="signupLastName">Last Name</label>
+                        <input class="auth-input" type="text" id="signupLastName" autocomplete="family-name" placeholder="Last" required>
+                    </div>
+                </div>
+                <div class="auth-field">
+                    <label class="auth-label" for="signupEmail">E-mail</label>
+                    <input class="auth-input" type="email" id="signupEmail" autocomplete="email" placeholder="your@email.com" required>
+                </div>
+                <div class="auth-field">
+                    <label class="auth-label" for="signupPhone">Phone Number <span style="color:#484848;letter-spacing:0.1em;">(Optional)</span></label>
+                    <input class="auth-input" type="tel" id="signupPhone" autocomplete="tel" placeholder="+1 (000) 000-0000">
+                </div>
+                <div class="auth-field">
+                    <label class="auth-label" for="signupPassword">Password</label>
+                    <input class="auth-input" type="password" id="signupPassword" autocomplete="new-password" placeholder="Min. 8 characters" required minlength="8">
+                </div>
+                <button class="auth-submit" type="submit">Create Account →</button>
+                <div class="auth-error" id="signupError"></div>
+                <div class="auth-success" id="signupSuccess"></div>
+            </form>
+            <p class="auth-footer-note">"MarqueX" respects your privacy. No spam.</p>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // ── Form submit ──────────────────────────────────────
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const form = this;
+        const first = document.getElementById('signupFirst').value.trim();
+        const last  = document.getElementById('signupLast').value.trim();
+        const email = document.getElementById('emailInput').value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (first && last && email && emailRegex.test(email)) {
+            const btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Submitting…';
+            const formData = new URLSearchParams(new FormData(form)).toString();
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formData
+            })
+            .then(function(response) {
+                if (!response.ok) throw new Error('Network response was not ok');
+                form.style.opacity = '0.25';
+                form.style.pointerEvents = 'none';
+                document.getElementById('successMsg').classList.add('show');
+            })
+            .catch(function() {
+                btn.disabled = false;
+                btn.textContent = 'Join The Waitlist →';
+                alert('Something went wrong. Please try again.');
+            });
+        }
+    });
+
+    // ── Custom cursor dot ────────────────────────────────
+    const dot = document.getElementById('cursorDot');
+    let mx = -100, my = -100, dx = -100, dy = -100;
+
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+    (function loop() {
+        dx += (mx - dx) * 0.18;
+        dy += (my - dy) * 0.18;
+        dot.style.left = dx + 'px';
+        dot.style.top  = dy + 'px';
+        requestAnimationFrame(loop);
+    })();
+
+    // ── Header scroll glass ──────────────────────────────
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 100);
+    }, { passive: true });
+
+    // ── Scroll reveal ────────────────────────────────────
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08 });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── Auth modal ───────────────────────────────────────
+    const authOverlay  = document.getElementById('authOverlay');
+    const authClose    = document.getElementById('authClose');
+    const openAuthBtn  = document.getElementById('openAuthBtn');
+    const userChip     = document.getElementById('userChip');
+    const userEmailEl  = document.getElementById('userEmail');
+    const logoutBtn    = document.getElementById('logoutBtn');
+
+    function openModal(tab) {
+        authOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        if (tab) switchTab(tab);
+    }
+
+    function closeModal() {
+        authOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    openAuthBtn.addEventListener('click', () => openModal('login'));
+    authClose.addEventListener('click', closeModal);
+    authOverlay.addEventListener('click', e => { if (e.target === authOverlay) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // ── Auth tabs ────────────────────────────────────────
+    function switchTab(name) {
+        document.querySelectorAll('.auth-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+        document.querySelectorAll('.auth-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + name));
+    }
+
+    document.querySelectorAll('.auth-tab').forEach(tab => {
+        tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+    });
+
+    // ── Netlify Identity ──────────────────────────────────
+    // netlifyIdentity is loaded via the CDN script in <head>
+    if (typeof netlifyIdentity !== 'undefined') {
+        netlifyIdentity.on('init', user => {
+            if (user) setLoggedIn(user);
+        });
+
+        netlifyIdentity.on('login', user => {
+            setLoggedIn(user);
+            netlifyIdentity.close();
+            closeModal();
+        });
+
+        netlifyIdentity.on('logout', () => setLoggedOut());
+
+        netlifyIdentity.init({ container: '#authOverlay' });
+    }
+
+    function setLoggedIn(user) {
+        const email = user?.email || '';
+        userEmailEl.textContent = email;
+        userChip.classList.add('visible');
+        openAuthBtn.style.display = 'none';
+    }
+
+    function setLoggedOut() {
+        userChip.classList.remove('visible');
+        openAuthBtn.style.display = '';
+    }
+
+    logoutBtn.addEventListener('click', () => {
+        if (typeof netlifyIdentity !== 'undefined') {
+            netlifyIdentity.logout();
+        } else {
+            setLoggedOut();
+        }
+    });
+
+    // ── Login form ──────────────────────────────────────
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email    = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value;
+        const errEl    = document.getElementById('loginError');
+        const okEl     = document.getElementById('loginSuccess');
+        errEl.classList.remove('show');
+        okEl.classList.remove('show');
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+            errEl.textContent = '✕  Enter a valid email address.';
+            errEl.classList.add('show');
+            return;
+        }
+        if (!password) {
+            errEl.textContent = '✕  Password is required.';
+            errEl.classList.add('show');
+            return;
+        }
+
+        // Delegate to Netlify Identity
+        if (typeof netlifyIdentity !== 'undefined') {
+            netlifyIdentity.open('login');
+            closeModal();
+            return;
+        }
+
+        errEl.textContent = '✕  Auth service unavailable. Please try again later.';
+        errEl.classList.add('show');
+    });
+
+    // ── Signup form ──────────────────────────────────────
+    document.getElementById('signupAuthForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const firstName = document.getElementById('signupFirstName').value.trim();
+        const lastName  = document.getElementById('signupLastName').value.trim();
+        const email     = document.getElementById('signupEmail').value.trim();
+        const password  = document.getElementById('signupPassword').value;
+        const errEl     = document.getElementById('signupError');
+        const okEl      = document.getElementById('signupSuccess');
+        errEl.classList.remove('show');
+        okEl.classList.remove('show');
+
+        if (!firstName) {
+            errEl.textContent = '✕  Please enter your first name.';
+            errEl.classList.add('show');
+            return;
+        }
+        if (!lastName) {
+            errEl.textContent = '✕  Please enter your last name.';
+            errEl.classList.add('show');
+            return;
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+            errEl.textContent = '✕  Enter a valid email address.';
+            errEl.classList.add('show');
+            return;
+        }
+        if (password.length < 8) {
+            errEl.textContent = '✕  Password must be at least 8 characters.';
+            errEl.classList.add('show');
+            return;
+        }
+
+        // Delegate to Netlify Identity
+        if (typeof netlifyIdentity !== 'undefined') {
+            netlifyIdentity.open('signup');
+            closeModal();
+            return;
+        }
+
+        errEl.textContent = '✕  Auth service unavailable. Please try again later.';
+        errEl.classList.add('show');
+    });
+
+    // Open modal if user clicks "Join The Grid" link
+    document.querySelectorAll('a[href="#signup"]').forEach(a => {
+        a.addEventListener('click', e => {
+            // only intercept if user is not logged in
+            if (userChip.classList.contains('visible')) return;
+        });
+    });
+
+    // ── Service Worker registration ───────────────────────
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .catch(() => { /* SW not available in local file:// context */ });
+        });
+    }
+</script>
+
+</body>
+</html>

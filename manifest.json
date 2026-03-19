@@ -1,0 +1,59 @@
+{
+  "name": "APEX — The Collector's Intelligence",
+  "short_name": "APEX",
+  "description": "Market intelligence for serious automotive collectors. Supercars, hypercars, classics, and investing. Every other day. Free.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090909",
+  "theme_color": "#090909",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["news", "finance", "lifestyle"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "APEX Desktop View"
+    },
+    {
+      "src": "/screenshots/mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "APEX Mobile View"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Subscribe",
+      "short_name": "Subscribe",
+      "description": "Join The Grid — subscribe to APEX",
+      "url": "/#signup",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Archive",
+      "short_name": "Archive",
+      "description": "Browse past issues",
+      "url": "/archive",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

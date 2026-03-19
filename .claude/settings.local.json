@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://raw.githubusercontent.com/anthropics/skills/main/skills/xlsx/SKILL.md\")"
+    ]
+  }
+}
