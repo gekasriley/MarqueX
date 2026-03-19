@@ -105,11 +105,35 @@
             background: #0f0f0f;
         }
 
+        .car-header {
+            position: relative;
+            width: 100%;
+            height: auto;
+            padding: 12px 0 0 0;
+            background: #0f0f0f;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: -60px;
+        }
+
+        .car-header-image {
+            max-width: 80%;
+            max-height: 50vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            mix-blend-mode: screen;
+            pointer-events: none;
+            margin: 0 auto;
+        }
+
         .hero-image {
             position: absolute;
-            top: 50%;
+            top: 10%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             max-width: 90%;
             max-height: 70vh;
             width: auto;
@@ -118,6 +142,7 @@
             mix-blend-mode: screen;
             z-index: 1;
             pointer-events: none;
+            display: none;
         }
 
         .hero-bg-text {
@@ -1244,10 +1269,14 @@
     </div>
 </header>
 
+<!-- ─── CAR HEADER ────────────────────────────────── -->
+<div class="car-header">
+    <img src="images/car-hero.jpg" alt="Front-facing supercar with headlights" class="car-header-image">
+</div>
 
 <!-- ─── HERO ──────────────────────────────────────── -->
 <section class="hero">
-    <img src="images/car-hero.jpg" alt="Front-facing supercar with headlights" class="hero-image">
+
     <div class="hero-bg-text" aria-hidden="true">MarqueX</div>
 
     <div class="hero-labels">
