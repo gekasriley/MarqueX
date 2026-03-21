@@ -595,6 +595,103 @@
 
         .signup-btn:hover { background: #F03420; }
 
+        .email-opt-in {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            font-weight: 300;
+            color: #E0E0E0;
+        }
+
+        .email-opt-in input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #D42B16;
+            flex-shrink: 0;
+        }
+
+        .email-opt-in label {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .thank-you-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .thank-you-modal.active {
+            display: flex;
+        }
+
+        .thank-you-content {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border: 1px solid #D42B16;
+            border-radius: 4px;
+            padding: 48px;
+            text-align: center;
+            max-width: 500px;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .thank-you-content h2 {
+            font-family: 'Barlow', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: #FF4422;
+            margin-bottom: 16px;
+        }
+
+        .thank-you-content p {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            font-weight: 300;
+            color: #E0E0E0;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .thank-you-btn {
+            background: #D42B16;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .thank-you-btn:hover {
+            background: #F03420;
+        }
+
         .signup-note {
             margin-top: 18px;
             font-family: 'DM Mono', monospace;
@@ -1132,7 +1229,7 @@
             .hero-eyebrow { font-size: 9px; margin-bottom: 14px; }
 
             .hero-image { max-width: 95%; max-height: 40vh; object-fit: contain; }
-            .signup-image { max-width: 100%; max-height: 45vh; right: auto; left: 50%; transform: translateY(-50%) translateX(-50%); object-fit: contain; filter: brightness(1.2) contrast(1.4); }
+            .signup-image { max-width: 60%; max-height: 60vh; right: 0; top: 50%; transform: translateY(-50%); object-fit: contain; filter: brightness(1.2) contrast(1.4); }
 
             /* Hide decorative background text & side label */
             .hero-bg-text,
@@ -1255,18 +1352,6 @@
         </svg>
     </div>
     <div class="h-center">The Collector's Intelligence</div>
-    <div class="h-right">
-        <div class="h-user-chip" id="userChip">
-            <span class="h-user-dot"></span>
-            <span id="userEmail"></span>
-            <button class="h-logout-btn" id="logoutBtn">Log Out</button>
-        </div>
-        <button class="h-login-btn" id="openAuthBtn">Log In</button>
-        <button class="h-menu" aria-label="Menu">
-            <span></span>
-            <span></span>
-        </button>
-    </div>
 </header>
 
 <!-- ─── CAR HEADER ────────────────────────────────── -->
@@ -1383,6 +1468,11 @@
                 Automotive News
                 <span class="coverage-tag">"INTELLIGENCE"</span>
             </li>
+            <li class="coverage-item">
+                <span class="coverage-num">07</span>
+                Safety Recalls
+                <span class="coverage-tag">"PROTECTION"</span>
+            </li>
         </ul>
     </div>
 </section>
@@ -1421,8 +1511,8 @@
     </div>
     <div class="feature-card">
         <div class="feature-id">// 03</div>
-        <div class="feature-name">DEEP<br>DIVES</div>
-        <p class="feature-text">Long-form essays on the machines, the makers, and the myths that define them, as well as up to date news in the industry. </p>
+        <div class="feature-name">DEEP<br>DIVES & SAFETY<br>RECALLS</div>
+        <p class="feature-text">Long-form essays on the machines, the makers, and the myths that define them. Plus up-to-date safety recalls for vehicles so you stay informed on critical automotive issues.</p>
     </div>
     <div class="feature-card">
         <div class="feature-id">// 04</div>
@@ -1483,12 +1573,30 @@
                     autocomplete="tel"
                 >
             </div>
+            <div class="email-opt-in">
+                <input
+                    type="checkbox"
+                    id="emailOptIn"
+                    name="email-opt-in"
+                    required
+                >
+                <label for="emailOptIn">I'd like to receive updates about the app and founding member information</label>
+            </div>
             <button class="signup-btn" type="submit">Join The Waitlist →</button>
         </form>
         <p class="signup-note">"MarqueX" respects your inbox. No spam. </p>
         <div class="success-msg" id="successMsg">✓ &nbsp;&nbsp; You're on the grid. First issue is coming to you.</div>
     </div>
 </section>
+
+<!-- ─── THANK YOU MODAL ───────────────────────────── -->
+<div class="thank-you-modal" id="thankYouModal">
+    <div class="thank-you-content">
+        <h2>Thank You!</h2>
+        <p>Thank you for joining our waitlist and becoming a founding member! Our team will email you with updates!</p>
+        <button class="thank-you-btn" onclick="document.getElementById('thankYouModal').classList.remove('active')">Close</button>
+    </div>
+</div>
 
 
 <!-- ─── FOOTER ─────────────────────────────────────── -->
@@ -1577,7 +1685,14 @@
         const first = document.getElementById('signupFirst').value.trim();
         const last  = document.getElementById('signupLast').value.trim();
         const email = document.getElementById('emailInput').value.trim();
+        const emailOptIn = document.getElementById('emailOptIn').checked;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailOptIn) {
+            alert('Please opt in to receive updates from us.');
+            return;
+        }
+
         if (first && last && email && emailRegex.test(email)) {
             const btn = form.querySelector('button[type="submit"]');
             btn.disabled = true;
@@ -1593,6 +1708,7 @@
                 form.style.opacity = '0.25';
                 form.style.pointerEvents = 'none';
                 document.getElementById('successMsg').classList.add('show');
+                document.getElementById('thankYouModal').classList.add('active');
             })
             .catch(function() {
                 btn.disabled = false;
