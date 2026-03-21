@@ -38,7 +38,19 @@
   - Car images stored in `/images/` folder: `car-hero.webp` (hero) and `car-subscribe.jpg` (signup)
   - Images use `mix-blend-mode: screen` for glowing effect against dark backgrounds
 - **Styling:** All CSS in `<style>` tag within HTML head
-- **Main file:** `MarqueXWaitlist.html`
+
+### ⚠️ CRITICAL: HTML Files Deployment
+**Two files must be kept in sync:**
+- `MarqueXWaitlist.html` — The working/development file
+- `index.html` — The file Netlify actually serves (due to redirect in netlify.toml)
+
+**Rule:** Whenever updates are made to `MarqueXWaitlist.html`, they MUST ALSO be applied to `index.html` before pushing to GitHub, or the changes won't appear on the live site.
+
+**How to apply:**
+- Make changes to both files simultaneously, OR
+- After editing MarqueXWaitlist.html, copy it to index.html: `cp MarqueXWaitlist.html index.html`
+- Commit and push both files to GitHub
+- Netlify will deploy the updated index.html
 
 ### Car Image Implementation
 - **car-hero.webp** (hero section): Front-facing supercar with headlights
