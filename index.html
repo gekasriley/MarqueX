@@ -1230,7 +1230,7 @@
 
             .hero-image { max-width: 95%; max-height: 40vh; object-fit: contain; }
             .cursor-dot { display: none; }
-            .signup-image { max-width: 60%; max-height: 60vh; right: 0; top: 10%; transform: translateY(0); object-fit: contain; mix-blend-mode: screen; filter: brightness(1.2) contrast(1.4); }
+            .signup-image { position: absolute; max-width: 60%; max-height: 60vh; right: 0; top: 10%; transform: translateY(0); width: auto; height: auto; object-fit: contain; mix-blend-mode: screen; z-index: 1; pointer-events: none; filter: brightness(1.2) contrast(1.4); }
 
             /* Hide decorative background text & side label */
             .hero-bg-text,
